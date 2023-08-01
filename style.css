@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: baseline;
+}
+.card-container {
+    width: 25%;
+    display: flex;
+    background: #3c3e44;
+    color: white;
+    border-radius: 10px;
+    margin: 10px;
+    border: solid 1px white;
+    overflow: hidden;
+}
+.info {
+    padding: 20px;
+}
+
+body {
+    background: #272b33;
+    height: 100vh;
+}
