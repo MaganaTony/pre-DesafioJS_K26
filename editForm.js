@@ -4,7 +4,7 @@ const urlID = url.get('id')
 
 const getData = async (id) => {
     try {
-      const response = await fetch(`https://kodemia26-default-rtdb.firebaseio.com/${id}.json`,
+      const response = await fetch(`https://kodemia-form-26js-rc-default-rtdb.firebaseio.com/${id}.json`,
         {
           method: "GET",
         }
@@ -26,6 +26,8 @@ const getData = async (id) => {
   const dataEditForm = (info) => {
     const nombre = document.querySelector("#inputName");
     nombre.value = info.nombre
+    const apellido = document.querySelector("#inputLastName");
+    apellido.value = info.apellido
     const fecha = document.querySelector("#inputFecha");
     fecha.value = info.fecha
     const country = document.querySelector("#inputCountry");
@@ -52,11 +54,13 @@ const getData = async (id) => {
   
     // obtener los valores de los inputs
     const nombre = document.querySelector("#inputName");
+    const apellido = document.querySelector("#inputLastName")
     const fecha = document.querySelector("#inputFecha");
     const country = document.querySelector("#inputCountry");
   
     const userInfo = {
       nombre: nombre.value,
+      apellido: apellido.value,
       fecha: fecha.value,
       country: country.value,
     };
@@ -64,7 +68,7 @@ const getData = async (id) => {
   });
 
   const updateDataById = async(id, updatedData) => {
-    const response = await fetch(`https://kodemia26-default-rtdb.firebaseio.com/${id}.json`,{
+    const response = await fetch(`https://kodemia-form-26js-rc-default-rtdb.firebaseio.com/${id}.json`,{
         method: 'PATCH',
         headers: {
             "Content-type": "application/json;charset=UTF-8"
