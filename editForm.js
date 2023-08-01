@@ -28,6 +28,7 @@ const getData = async (id) => {
     nombre.value = info.nombre
     const apellido = document.querySelector("#inputLastName");
     apellido.value = info.apellido
+    const genero = document.querySelector('input[name="gender"]:checked')
     const fecha = document.querySelector("#inputFecha");
     fecha.value = info.fecha
     const country = document.querySelector("#inputCountry");
@@ -55,12 +56,14 @@ const getData = async (id) => {
     // obtener los valores de los inputs
     const nombre = document.querySelector("#inputName");
     const apellido = document.querySelector("#inputLastName")
+    const genero = document.querySelector('input[name="gender"]:checked')
     const fecha = document.querySelector("#inputFecha");
     const country = document.querySelector("#inputCountry");
   
     const userInfo = {
       nombre: nombre.value,
       apellido: apellido.value,
+      genero: genero.value,
       fecha: fecha.value,
       country: country.value,
     };
