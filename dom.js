@@ -4,12 +4,16 @@ form.addEventListener("submit", (event) => {
 
   // obtener los valores de los inputs
   const nombre = document.querySelector("#inputName");
+  const apellido = document.querySelector("#inputLastName")
+  const genero = document.querySelector('input[name="gender"]:checked')
   const fecha = document.querySelector("#inputFecha");
   const country = document.querySelector("#inputCountry");
   const avatar = document.querySelector("#inputAvatar");
 
   const userInfo = {
     nombre: nombre.value,
+    apellido: apellido.value,
+    genero: genero.value,
     fecha: fecha.value,
     country: country.value,
     avatar: avatar.value,
@@ -20,7 +24,7 @@ form.addEventListener("submit", (event) => {
 const getData = async () => {
   try {
     const response = await fetch(
-      "https://kodemia26-default-rtdb.firebaseio.com/.json",
+      "https://kodemia-form-26js-rc-default-rtdb.firebaseio.com/.json",
       {
         method: "GET",
       }
@@ -32,9 +36,11 @@ const getData = async () => {
       const maparray = array.map((item) => {
         const personaObject = {
           id: item[0],
-          name: item[1].nombre,
-          fecha: item[1].fecha,
-          country: item[1].country,
+          name: "Nombre:" + ' ' + item[1].nombre,
+          LastName: "Apellido:" + ' ' + item[1].apellido,
+          gender: "Genero:" + ' ' + item[1].genero,
+          fecha: "Birthdate:" + ' ' + item[1].fecha,
+          country: "País:" + ' ' + item[1].country,
           avatar: item[1].avatar,
         };
         
@@ -72,6 +78,14 @@ const createContainer = (funcion) => {
  const name = document.createElement("h2");
  name.textContent = funcion.name;
  containerText.appendChild(name);
+
+ const LastName = document.createElement("h2");
+ LastName.textContent = funcion.LastName;
+ containerText.appendChild(LastName);
+
+ const gender = document.createElement("h2")
+ gender.textContent = funcion.gender
+ containerText.appendChild(gender)
 
  const fechaData = document.createElement("h2");
  fechaData.textContent = funcion.fecha;
@@ -112,7 +126,7 @@ const createContainer = (funcion) => {
 
 const createData = async (userdata) => {
   const response = await fetch(
-    "https://kodemia26-default-rtdb.firebaseio.com/.json",
+    "https://kodemia-form-26js-rc-default-rtdb.firebaseio.com/.json",
     {
       method: "POST",
       body: JSON.stringify(userdata),
@@ -128,7 +142,7 @@ const createData = async (userdata) => {
 
 const deleteData = async (id) => {
   const response = await fetch(
-    `https://kodemia26-default-rtdb.firebaseio.com/${id}.json`,
+    `https://kodemia-form-26js-rc-default-rtdb.firebaseio.com/${id}.json`,
     {
       method: "DELETE",
     }
