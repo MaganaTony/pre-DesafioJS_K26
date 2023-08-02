@@ -25,7 +25,7 @@ form.addEventListener("submit", (event) => {
 const getData = async () => {
   try {
     const response = await fetch(
-      "https://kodemia-form-26js-rc-default-rtdb.firebaseio.com/.json",
+      "https://kodemia26-default-rtdb.firebaseio.com/.json",
       {
         method: "GET",
       }
@@ -65,11 +65,14 @@ const createContainer = (funcion) => {
   //CARD
   const thenewCard = document.createElement("div");
   thenewCard.setAttribute("class", "card-container");
+  thenewCard.setAttribute("class", "d-flex justify-content-center flex-wrap");
+  thenewCard.style.margin="10px"
   container.appendChild(thenewCard);
   //Imagen
   const avatarimage = document.createElement("img");
   avatarimage.setAttribute("src", funcion.avatar);
-  avatarimage.style.width = "80px";
+  avatarimage.style.width = "10em";
+  avatarimage.style.height = "15em";
   thenewCard.appendChild(avatarimage);
   //ContainerText
   const containerText = document.createElement("div");
@@ -103,6 +106,7 @@ const createContainer = (funcion) => {
   deleteButton.style.width = "10px";
   deleteButton.style.height = "18px";
   deleteButton.style.backgroundColor = "red";
+  deleteButton.style.margin='0.2em'
   thenewCard.appendChild(deleteButton);
   deleteButton.addEventListener("click", (e) => {
     const buttonID = e.target.id;
@@ -117,6 +121,7 @@ const createContainer = (funcion) => {
   editButton.style.width = "10px";
   editButton.style.height = "18px";
   editButton.style.backgroundColor = "green";
+  editButton.style.margin='0.2em'
   thenewCard.appendChild(editButton);
   editButton.addEventListener("click", (e) => {
     const editButtonID = e.target.id;
@@ -127,7 +132,7 @@ const createContainer = (funcion) => {
 
 const createData = async (userdata) => {
   const response = await fetch(
-    "https://kodemia-form-26js-rc-default-rtdb.firebaseio.com/.json",
+    "https://kodemia26-default-rtdb.firebaseio.com/.json",
     {
       method: "POST",
       body: JSON.stringify(userdata),
@@ -142,7 +147,7 @@ const createData = async (userdata) => {
 
 const deleteData = async (id) => {
   const response = await fetch(
-    `https://kodemia-form-26js-rc-default-rtdb.firebaseio.com/${id}.json`,
+    `https://kodemia26-default-rtdb.firebaseio.com/${id}.json`,
     {
       method: "DELETE",
     }
@@ -153,11 +158,13 @@ const deleteData = async (id) => {
 };
 
 const ButtonRedirection = (id) => {
-  window.location.href = `http://127.0.0.1:3000/clase-APIs/tareasAPI/tarea2/editForm.html?id=${id}`;
+  window.location.href = `http://127.0.0.1:3000/editForm.html?id=${id}`;
 };
 
 //Nueva funcion de SEARCG
 const formSearch = document.querySelector("#seach-form");
+formSearch.style.marginTop="50px"
+formSearch.style.marginLeft="10px"
 formSearch.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -209,7 +216,7 @@ const filterResults = (filter) => {
       containerText.appendChild(countryData);
       alert("Se encontro la coincidencia!");
     } else {
-      console.log("No se encontro");
+      alert("No se encontro ninguna coincidencia");
     }
   });
 };

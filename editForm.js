@@ -4,7 +4,7 @@ const urlID = url.get('id')
 
 const getData = async (id) => {
     try {
-      const response = await fetch(`https://kodemia-form-26js-rc-default-rtdb.firebaseio.com/${id}.json`,
+      const response = await fetch(`https://kodemia26-default-rtdb.firebaseio.com/${id}.json`,
         {
           method: "GET",
         }
@@ -71,7 +71,7 @@ const getData = async (id) => {
   });
 
   const updateDataById = async(id, updatedData) => {
-    const response = await fetch(`https://kodemia-form-26js-rc-default-rtdb.firebaseio.com/${id}.json`,{
+    const response = await fetch(`https://kodemia26-default-rtdb.firebaseio.com//${id}.json`,{
         method: 'PATCH',
         headers: {
             "Content-type": "application/json;charset=UTF-8"
@@ -82,5 +82,5 @@ const getData = async (id) => {
 };
 
 const ButtonRedirection = () => {
-    window.location.href = `http://127.0.0.1:3000/clase-APIs/tareasAPI/tarea2/index.html`
+    window.location.href = `http://127.0.0.1:3000/index.html`
   }
