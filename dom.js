@@ -207,6 +207,7 @@ const filterResults = (filter) => {
       const countryData = document.createElement("h2");
       countryData.textContent = item.country;
       containerText.appendChild(countryData);
+      alert("Se encontro la coincidencia!");
     } else {
       console.log("No se encontro");
     }
